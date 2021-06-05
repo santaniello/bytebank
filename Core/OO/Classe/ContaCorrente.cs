@@ -1,4 +1,4 @@
-namespace Um_ByteBank
+namespace Core.OO.Classe
 {
     public class ContaCorrente
     {

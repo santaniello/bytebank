@@ -1,10 +1,16 @@
 ﻿using System;
+using Core.OO.Classe;
 
-namespace Um_ByteBank
+namespace Core
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            TestarUsoDeClasse();
+        }
+
+        static void TestarUsoDeClasse()
         {
             ContaCorrente contaPaulo = new ContaCorrente();
             contaPaulo.SetTitular("Paulo");
