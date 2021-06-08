@@ -1,3 +1,5 @@
+using System;
+
 namespace Core.OO.Heranca
 {
     public class Funcionario
@@ -5,7 +7,18 @@ namespace Core.OO.Heranca
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public double Salario { get; set; }
+
+        public Funcionario()
+        {
+            Console.WriteLine("Construtor sem parâmetros Funcionario");
+        }
         
+        public Funcionario(string cpf)
+        {
+            Console.WriteLine("Construtor com parâmetros Funcionario");
+            Cpf = cpf;
+        }
+
         /**
          * A palavra chave virtual indica que podemos sobreescrever o método GetBonificacao através de alguma classe filha.
          * Em Java, acontece justamente o contrario ...  Cada método criado é virtual por default, ou seja, pode ser sobreescrito e quando colocamos a palavra final

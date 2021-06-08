@@ -42,10 +42,10 @@ namespace Core
             carlos.Nome = "Carlos";
             carlos.Cpf = "546.879.157-20";
             carlos.Salario = 2000;
-
+            
             gerenciador.Registrar(carlos);
             
-            Diretor roberta = new Diretor();
+            Diretor roberta = new Diretor("454.658.148-3");
             roberta.Nome = "Roberta";
             roberta.Cpf = "454.658.148-3";
             roberta.Salario = 5000;
