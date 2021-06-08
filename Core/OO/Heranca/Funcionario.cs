@@ -2,21 +2,22 @@ using System;
 
 namespace Core.OO.Heranca
 {
-    public class Funcionario
+    public abstract class Funcionario
     {
         public string Nome { get; set; }
         public string Cpf { get; set; }
-        public double Salario { get; set; }
+        public double Salario { get; protected set; }
 
         public Funcionario()
         {
             Console.WriteLine("Construtor sem parâmetros Funcionario");
         }
         
-        public Funcionario(string cpf)
+        public Funcionario(double salario ,string cpf)
         {
             Console.WriteLine("Construtor com parâmetros Funcionario");
             Cpf = cpf;
+            Salario = salario;
         }
 
         /**
@@ -26,9 +27,13 @@ namespace Core.OO.Heranca
          *
          * https://codewithshadman.com/no-virtual-keyword-in-java-and-no-final-keyword-in-csharp-explained/
          */
-        public  virtual double GetBonificacao()
+        public virtual void MetodoComImplementacaoPadrao()
         {
-            return Salario * 0.10;
+           Console.WriteLine("Implementacão Padrão do método: MetodoComImplementacaoPadrao");
         }
+        
+        public abstract double GetBonificacao();
+
+        public abstract void AumentarSalario();
     }
 }
