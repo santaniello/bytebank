@@ -7,17 +7,17 @@ namespace Core.OO.Heranca
      * Implementado Heranca ( : é igual o extends no Java)
      * 
      */
-    public class Diretor : Funcionario
+    public class Diretor : FuncionarioAutenticavel
     {
         
-        /**
-         * O construtor sem parâmetros da classe Diretor chamará antes de tudo o construtor sem parâmetros
-         * da classe base Funcionario().         
-         */
-        public Diretor()
-        {
-            Console.WriteLine("Construtor sem parâmetros Diretor");
-        }
+        // /**
+        //  * O construtor sem parâmetros da classe Diretor chamará antes de tudo o construtor sem parâmetros
+        //  * da classe base Funcionario().         
+        //  */
+        // public Diretor()
+        // {
+        //     Console.WriteLine("Construtor sem parâmetros Diretor");
+        // }
         
         /**
          * Aqui estamos chamando um construtor da classe base e passando o CPF
