@@ -19,8 +19,10 @@ namespace Core
 
         public static void TestarArrays()
         {
-            ArrayDeIdades array = new ArrayDeIdades();
-            array.TestarArray();
+            ArrayDeIdades idades = new ArrayDeIdades(5);
+            idades.TestarArray();
+            ArrayDeContasCorrentes contasCorrentes = new ArrayDeContasCorrentes();
+            contasCorrentes.TestarArray();
         }
         
         public static void UsarSistema()

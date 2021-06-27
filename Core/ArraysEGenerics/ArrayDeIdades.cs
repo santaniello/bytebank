@@ -4,9 +4,15 @@ namespace Core.ArraysEGenerics
 {
     public class ArrayDeIdades
     {
+        private int[] idades;
+
+        public ArrayDeIdades(int size)
+        {
+            idades = new int[size];
+        }
+
         public void TestarArray()
         {
-            int[] idades = new int[5];
             idades[0] = 1;
             idades[1] = 2;
             idades[2] = 3;
@@ -15,7 +21,9 @@ namespace Core.ArraysEGenerics
 
             for (int i = 0; i < idades.Length; i++)
             {
-                Console.WriteLine(idades[i]);
+                int idade = idades[i];
+                Console.WriteLine($"Acessando o array idades no indice {i}");
+                Console.WriteLine($"Valor de idades[{i}] = {idade}");
             }
         }
     }

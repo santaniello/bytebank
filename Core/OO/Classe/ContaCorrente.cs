@@ -61,6 +61,16 @@ namespace Core.OO.Classe
          * Exemplo de construtor sem parâmetros          
          */
         public ContaCorrente(){}
+        
+        /**
+         * Exemplo de construtor paramétrico          
+         */
+        public ContaCorrente(int agencia, int numero)
+        {
+            Agencia = agencia;
+            Numero = numero;
+            TotalDeContasCriadas++;
+        }
 
         /**
          * Exemplo de construtor paramétrico          
