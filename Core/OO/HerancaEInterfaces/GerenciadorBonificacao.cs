@@ -1,4 +1,6 @@
-namespace Core.OO.Heranca
+using Core.OO.HerancaEInterfaces.Funcionarios;
+
+namespace Core.OO.HerancaEInterfaces
 {
     public class GerenciadorBonificacao
     {

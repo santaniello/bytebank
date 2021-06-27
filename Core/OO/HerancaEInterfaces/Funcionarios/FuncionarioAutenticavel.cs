@@ -1,6 +1,6 @@
-using Core.OO.Heranca.Sistemas;
+using Core.OO.HerancaEInterfaces.Sistemas;
 
-namespace Core.OO.Heranca
+namespace Core.OO.HerancaEInterfaces.Funcionarios
 {
     /**
      * No caso de uma classe extender de uma classe e implementar uma interface, primeiro adicionamos a classe (ex: Funcionario) e depois colocamos as interfacer separadas por virgula (ex: IAutenticavel).

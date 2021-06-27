@@ -1,6 +1,6 @@
-using Core.OO.Heranca.Sistemas;
+using Core.OO.HerancaEInterfaces.Sistemas;
 
-namespace Core.OO.Heranca
+namespace Core.OO.HerancaEInterfaces
 {
     public class ParceiroComercial : IAutenticavel
     {

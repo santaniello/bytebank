@@ -1,6 +1,5 @@
 using System;
-
-namespace Core.OO.Heranca.Sistemas
+namespace Core.OO.HerancaEInterfaces.Sistemas
 {
     public class SistemaInterno
     {

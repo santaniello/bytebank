@@ -1,4 +1,4 @@
-namespace Core.OO.Heranca
+namespace Core.OO.HerancaEInterfaces.Funcionarios
 {
     public class Designer : Funcionario
     {

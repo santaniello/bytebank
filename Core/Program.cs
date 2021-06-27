@@ -1,7 +1,9 @@
 ﻿using System;
+using Core.ArraysEGenerics;
 using Core.OO.Classe;
-using Core.OO.Heranca;
-using Core.OO.Heranca.Sistemas;
+using Core.OO.HerancaEInterfaces;
+using Core.OO.HerancaEInterfaces.Funcionarios;
+using Core.OO.HerancaEInterfaces.Sistemas;
 
 namespace Core
 {
@@ -11,7 +13,14 @@ namespace Core
         {
             //TestarUsoDeClasse();
             //TestarUsoDeHeranca();
-            UsarSistema();
+            //UsarSistema();
+            TestarArrays();
+        }
+
+        public static void TestarArrays()
+        {
+            ArrayDeIdades array = new ArrayDeIdades();
+            array.TestarArray();
         }
         
         public static void UsarSistema()

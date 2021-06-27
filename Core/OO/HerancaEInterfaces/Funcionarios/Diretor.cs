@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.OO.Heranca
+namespace Core.OO.HerancaEInterfaces.Funcionarios
 {
     
     /**
