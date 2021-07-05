@@ -14,7 +14,8 @@ namespace Core
             //TestarUsoDeClasse();
             //TestarUsoDeHeranca();
             //UsarSistema();
-            TestarArrays();
+           // TestarArrays();
+           TestarListaPropria();
         }
 
         public static void TestarArrays()
@@ -23,6 +24,25 @@ namespace Core
             idades.TestarArray();
             ArrayDeContasCorrentes contasCorrentes = new ArrayDeContasCorrentes();
             contasCorrentes.TestarArray();
+        }
+        
+        public static void TestarListaPropria()
+        {
+            ListaDeContaCorrente lista = new ListaDeContaCorrente(capacidadeInicial: 1);
+
+            lista.Adicionar(new ContaCorrente(345, 23462));
+            lista.Adicionar(new ContaCorrente(363, 22451));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
+            lista.Adicionar(new ContaCorrente(735, 23552));
         }
         
         public static void UsarSistema()
