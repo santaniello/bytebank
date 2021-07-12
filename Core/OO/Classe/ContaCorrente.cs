@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Core.OO.Classe
 {
     public class ContaCorrente
@@ -81,6 +83,20 @@ namespace Core.OO.Classe
             Agencia = agencia;
             Numero = numero;
             TotalDeContasCriadas++;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            /*
+             * a palavra reservada as verifica se o Objeto recebido é do tipo ContaCorrente
+             * caso seja ele faz o cast e caso contrário ele seta null.
+             */
+            var contaCorrente = obj as ContaCorrente;
+
+            if (contaCorrente == null)
+              return false;
+
+            return (contaCorrente.Agencia == Agencia && contaCorrente.Numero == Numero);
         }
     }
 }

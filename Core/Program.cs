@@ -29,7 +29,8 @@ namespace Core
         public static void TestarListaPropria()
         {
             ListaDeContaCorrente lista = new ListaDeContaCorrente(capacidadeInicial: 1);
-
+            ContaCorrente contaFelipe = new ContaCorrente(555,555555);
+            lista.Adicionar(contaFelipe);
             lista.Adicionar(new ContaCorrente(345, 23462));
             lista.Adicionar(new ContaCorrente(363, 22451));
             lista.Adicionar(new ContaCorrente(735, 23552));
@@ -43,6 +44,14 @@ namespace Core
             lista.Adicionar(new ContaCorrente(735, 23552));
             lista.Adicionar(new ContaCorrente(735, 23552));
             lista.Adicionar(new ContaCorrente(735, 23552));
+            
+            lista.EscreverNaTela();
+            lista.Remover(contaFelipe);
+            lista.EscreverNaTela();
+            int r = lista.getIndex(contaFelipe);
+            Console.WriteLine(r);
+
+
         }
         
         public static void UsarSistema()

@@ -44,6 +44,44 @@ namespace Core.ArraysEGenerics
             _proximaPosicao++;
         }
 
+        public int getIndex(ContaCorrente item)
+        {
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                if (_itens[i].Equals(item))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public void Remover(ContaCorrente item)
+        {
+            int index = getIndex(item);
+            if (index < 0)
+            {
+                return;
+            }
+
+            for (int i = index; i < _proximaPosicao - 1; i++)
+            {
+                _itens[i] = _itens[i + 1];
+            }
+
+            _proximaPosicao--;
+            _itens[_proximaPosicao] = null;
+        }
+
+        public void EscreverNaTela()
+        {
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente contaCorrente = _itens[i];
+                Console.WriteLine($"Conta numero {contaCorrente.Agencia} {contaCorrente.Numero}");
+            }
+        }
+
         private void VerificaCapacidade(int tamanhoNecessario)
         {
             if (_itens.Length >= tamanhoNecessario)
