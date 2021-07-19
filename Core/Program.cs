@@ -15,7 +15,9 @@ namespace Core
             //TestarUsoDeHeranca();
             //UsarSistema();
            // TestarArrays();
-           TestarListaPropria();
+           //TestarListaPropria();
+           //Exercicios.SomarNumeros(new int[] { 1, 2, 3, 4, 5 });
+           Exercicios.TestarIndices();
         }
 
         public static void TestarArrays()
@@ -129,5 +131,8 @@ namespace Core
             Console.WriteLine("Total de bonificações do mês " +
                               gerenciadorBonificacao.GetTotalBonificacao());
         }
+
+
+       
     }
 }

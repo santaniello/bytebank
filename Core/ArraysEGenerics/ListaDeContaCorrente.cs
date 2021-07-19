@@ -43,6 +43,19 @@ namespace Core.ArraysEGenerics
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
         }
+        
+        /**
+         * 
+         * 
+         */
+        public void AdicionarVarios(params ContaCorrente[] itens)
+        {
+            foreach(ContaCorrente conta in itens)
+            {
+                Adicionar(conta);
+            }
+        }
+        
 
         public int getIndex(ContaCorrente item)
         {
@@ -55,6 +68,58 @@ namespace Core.ArraysEGenerics
             }
             return -1;
         }
+
+        public int Tamanho
+        {
+            get
+            {
+                return _proximaPosicao;
+            }
+        }
+
+        public ContaCorrente GetItemNoIndice(int index)
+        {
+            if (index < 0 || index >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+            return  _itens[index];
+        }
+        
+        /**
+         * Os Indexadores permitem que as instâncias de uma classe ou estrutura sejam indexadas apenas como vetores.         
+         * Não existe este tipo de construção na linguagem Java.
+         *
+         * Sixtax de exemplo usando int:
+         *
+         * public int this[int index] // declaração
+         * {
+         *   acessores get e set
+         * }
+         *
+         * Artigo: http://www.macoratti.net/16/08/c_index1.htm
+         *
+         * -----------------------------------------------------------------------------------------------------------------------
+         * params int[] indices // Aqui estamos fazendo uso de params que são um sixtar sugar da linguagem C# e desempenham
+         * o mesmo papel do varargs em Java
+         *
+         * params servem para passarmos uma quantidade infinitas de objetos de um mesmo tipo e o método recebera esses objetos em forma de um array
+         */
+        public ContaCorrente[] this[params int[] indices]
+        {
+            get
+            {
+                ContaCorrente[] resultado = new ContaCorrente[indices.Length];
+                for (int i = 0; i < indices.Length; i++)
+                {
+                    int indiceDaLista = indices[i];
+                    resultado[i] = GetItemNoIndice(indiceDaLista);
+                }
+                return resultado;
+            }
+        }
+        
+        
 
         public void Remover(ContaCorrente item)
         {
@@ -75,10 +140,9 @@ namespace Core.ArraysEGenerics
 
         public void EscreverNaTela()
         {
-            for (int i = 0; i < _proximaPosicao; i++)
+            foreach (var conta in _itens)
             {
-                ContaCorrente contaCorrente = _itens[i];
-                Console.WriteLine($"Conta numero {contaCorrente.Agencia} {contaCorrente.Numero}");
+                Console.WriteLine($"Conta numero {conta.Agencia} {conta.Numero}");
             }
         }
 
