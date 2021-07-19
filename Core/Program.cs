@@ -17,7 +17,8 @@ namespace Core
            // TestarArrays();
            //TestarListaPropria();
            //Exercicios.SomarNumeros(new int[] { 1, 2, 3, 4, 5 });
-           Exercicios.TestarIndices();
+           //Exercicios.TestarIndices();
+           Exercicios.TestarListaGenerica();
         }
 
         public static void TestarArrays()

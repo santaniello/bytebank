@@ -39,5 +39,24 @@ namespace Core
                 Console.WriteLine(conta.GetTitular());
             }
         }
+        
+        public static void TestarListaGenerica()
+        {
+            ListaGenerica<ContaCorrente> listaDeContas = new ListaGenerica<ContaCorrente>();
+            listaDeContas.AdicionarVarios(
+                new ContaCorrente("Joao", 111, 222),
+                new ContaCorrente("Felipe", 111, 222),
+                new ContaCorrente("Felipe", 111, 222),
+                new ContaCorrente("Pedro ", 111, 222),
+                new ContaCorrente("Ademir", 111, 222),
+                new ContaCorrente("Natalia", 111, 222),
+                new ContaCorrente("Jean", 111, 222),
+                new ContaCorrente("Mauricio", 111, 222)
+            );
+            for(int x = 0; x < listaDeContas.Tamanho; x++)
+            {
+                Console.WriteLine(listaDeContas[x].GetTitular());
+            }
+        }
     }
 }
