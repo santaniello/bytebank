@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Core.OO.Exception;
 
 namespace Core.OO.Classe
 {
@@ -46,10 +48,12 @@ namespace Core.OO.Classe
         /**
          * Abaixo nós criamos as propriedades Agencia e Numero com letra maiuscula que é um padrão da linguagem. Repare que como não houve customização dos gettes e setters
          * não foi necessário criar as varáveis _agencia e _numero pois as mesmas serão criadas em tempo de compilação 
+         *  
+         * public int Agencia { get; set; } 
          */
 
-        public int Agencia { get; set; }
-        public int Numero { get; set; }
+        public int  Agencia { get;  }
+        public int Numero { get;  }
 
 
         /**
@@ -58,6 +62,12 @@ namespace Core.OO.Classe
          * Repare que inicializamos a propriedade com o valor 1.
          */
         public static int TotalDeContasCriadas { get; private set; } = 1;
+
+        public int ContadorSaquesNaoPermitidos { get; private set; }
+
+        public int ContadorTransferenciasNaoPermitidas { get; private set; }
+        
+        
 
         /**
          * Exemplo de construtor sem parâmetros          
@@ -69,6 +79,17 @@ namespace Core.OO.Classe
          */
         public ContaCorrente(int agencia, int numero)
         {
+            /*
+             * nameof converte o nome de um atributo em string forcando o usuário caso troque o nome do parametro a alterar
+             * também na exceção.
+             * 
+             */
+            if(agencia <= 0)
+                throw new ArgumentException("O argumento agencia deve ser maior que 0.", nameof(agencia));
+            
+            if(numero <= 0)
+                throw new ArgumentException("O argumento numero deve ser maior que 0.", nameof(numero));
+            
             Agencia = agencia;
             Numero = numero;
             TotalDeContasCriadas++;
@@ -97,6 +118,45 @@ namespace Core.OO.Classe
               return false;
 
             return (contaCorrente.Agencia == Agencia && contaCorrente.Numero == Numero);
+        }
+        
+        public void Sacar(double valor)
+        {
+            if (valor < 0)
+            {
+                throw new ArgumentException("Valor de saque não pode ser negativo", nameof(valor));
+            }
+            if (_saldo < valor)
+            {
+                ContadorSaquesNaoPermitidos++;
+                throw new SaldoInsuficienteException(_saldo, valor);
+            }
+            _saldo -= valor;
+        }
+        
+        public void Transferir(double valor, ContaCorrente contaDestino)
+        {
+            if (valor < 0)
+            {
+                throw new ArgumentException("Valor inválido para a transferência.", nameof(valor));
+            }
+
+            try
+            {
+                Sacar(valor);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                ContadorTransferenciasNaoPermitidas++;
+                throw new OperacaoFinanceiraException("Operação não realizada.", ex);
+            }
+
+            contaDestino.Depositar(valor);
+        }
+        
+        public void Depositar(double valor)
+        {
+            _saldo += valor;
         }
     }
 }
