@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
-using Core.OO.Classe;
+using Modelos.OO.Classe;
 
-namespace Core.ArraysEGenerics
+namespace Modelos.ArraysEGenerics
 {
     public class ListaDeContaCorrente
     {

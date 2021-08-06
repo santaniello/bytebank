@@ -1,7 +1,7 @@
 using System;
-using Core.OO.Classe;
+using Modelos.OO.Classe;
 
-namespace Core.ArraysEGenerics
+namespace Modelos.ArraysEGenerics
 {
     public class ArrayDeContasCorrentes
     {

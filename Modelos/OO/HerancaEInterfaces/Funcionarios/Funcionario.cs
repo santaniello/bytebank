@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.OO.HerancaEInterfaces.Funcionarios
+namespace Modelos.OO.HerancaEInterfaces.Funcionarios
 {
     public abstract class Funcionario
     {
@@ -32,7 +32,12 @@ namespace Core.OO.HerancaEInterfaces.Funcionarios
            Console.WriteLine("Implementacão Padrão do método: MetodoComImplementacaoPadrao");
         }
         
-        public abstract double GetBonificacao();
+        /*
+         * O modificador de acesso internal protected indica que esse metodo será visivel no projeto Modelos e para todas as classes que herdarem de Funcionario.
+         * O unico modificador duplo (combinação de modificadores) que existe é o internal protected  
+         * 
+         */
+        internal protected  abstract double GetBonificacao();
 
         public abstract void AumentarSalario();
     }

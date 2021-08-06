@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Core.OO.Classe
+namespace Modelos.OO.Classe
 {
     public class LeitorDeArquivo : IDisposable
     {

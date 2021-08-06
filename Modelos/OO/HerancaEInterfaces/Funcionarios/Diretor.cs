@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.OO.HerancaEInterfaces.Funcionarios
+namespace Modelos.OO.HerancaEInterfaces.Funcionarios
 {
     
     /**
@@ -43,7 +43,7 @@ namespace Core.OO.HerancaEInterfaces.Funcionarios
         }
 
       
-        public override double GetBonificacao()
+        internal protected override double GetBonificacao()
         {
             return Salario + 0.5;
         }

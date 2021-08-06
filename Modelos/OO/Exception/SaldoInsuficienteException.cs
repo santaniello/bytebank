@@ -1,4 +1,4 @@
-namespace Core.OO.Exception
+namespace Modelos.OO.Exception
 {
     public class SaldoInsuficienteException : System.Exception
     {

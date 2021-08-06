@@ -1,6 +1,6 @@
 using System;
-using Core.ArraysEGenerics;
-using Core.OO.Classe;
+using Modelos.ArraysEGenerics;
+using Modelos.OO.Classe;
 
 namespace Core
 {

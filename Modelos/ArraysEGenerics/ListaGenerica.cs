@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.ArraysEGenerics
+namespace Modelos.ArraysEGenerics
 {
     public class ListaGenerica<T>
     {

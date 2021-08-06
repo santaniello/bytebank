@@ -1,4 +1,4 @@
-namespace Core.OO.HerancaEInterfaces.Sistemas
+namespace Modelos.OO.HerancaEInterfaces.Sistemas
 {
     public interface IAutenticavel
     {

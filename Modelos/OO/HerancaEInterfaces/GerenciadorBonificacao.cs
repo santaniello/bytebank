@@ -1,6 +1,6 @@
-using Core.OO.HerancaEInterfaces.Funcionarios;
+using Modelos.OO.HerancaEInterfaces.Funcionarios;
 
-namespace Core.OO.HerancaEInterfaces
+namespace Modelos.OO.HerancaEInterfaces
 {
     public class GerenciadorBonificacao
     {

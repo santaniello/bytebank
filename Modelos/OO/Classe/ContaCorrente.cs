@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Core.OO.Exception;
+using Modelos.OO.Exception;
 
-namespace Core.OO.Classe
+
+namespace Modelos.OO.Classe
 {
     public class ContaCorrente
     {

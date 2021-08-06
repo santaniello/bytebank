@@ -1,7 +1,7 @@
 using System;
-using Core.OO.HerancaEInterfaces;
-using Core.OO.HerancaEInterfaces.Funcionarios;
-using Core.OO.HerancaEInterfaces.Sistemas;
+using Modelos.OO.HerancaEInterfaces;
+using Modelos.OO.HerancaEInterfaces.Funcionarios;
+using Modelos.OO.HerancaEInterfaces.Sistemas;
 
 namespace Core
 {

@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using Core.OO.Classe;
+using Modelos.OO.Classe;
 
 namespace Core
 {

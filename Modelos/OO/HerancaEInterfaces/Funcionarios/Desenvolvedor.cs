@@ -1,4 +1,4 @@
-namespace Core.OO.HerancaEInterfaces.Funcionarios
+namespace Modelos.OO.HerancaEInterfaces.Funcionarios
 {
     public class Desenvolvedor : Funcionario
     {
@@ -9,7 +9,7 @@ namespace Core.OO.HerancaEInterfaces.Funcionarios
             Salario *= 0.15;
         }
 
-        public override double GetBonificacao()
+        internal protected override double GetBonificacao()
         {
             return Salario * 0.1;
         }

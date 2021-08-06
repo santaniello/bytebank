@@ -1,6 +1,6 @@
 using System;
-using Core.OO.Classe;
-using Core.OO.Exception;
+using Modelos.OO.Classe;
+using Modelos.OO.Exception;
 
 namespace Core
 {

@@ -1,4 +1,4 @@
-namespace Core.OO.HerancaEInterfaces.Funcionarios
+namespace Modelos.OO.HerancaEInterfaces.Funcionarios
 {
     public class GerenteDeConta : FuncionarioAutenticavel
     {
@@ -11,7 +11,7 @@ namespace Core.OO.HerancaEInterfaces.Funcionarios
             Salario *= 1.05;
         }
 
-        public override double GetBonificacao()
+        internal protected override double GetBonificacao()
         {
             return Salario * 0.25;
         } 
