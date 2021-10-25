@@ -43,10 +43,6 @@ namespace Core
             {
                 Console.WriteLine(e.Message);
             }
-
-
-
-
         }
     }
 }

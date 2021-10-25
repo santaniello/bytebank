@@ -17,7 +17,9 @@ namespace Core
            //ExerciciosArrayEGenerics.TestarListaGenerica();
            //ExerciciosExceptions.TestarExceptions();
            //ExerciciosDisposable.CarregarContas();
-           ExercicioListCSharp.AdicionarVarios();
+           //ExercicioExtensoes.AdicionarVarios();
+           //ExercicioList.TestarOrdenacaoDeListasDeInteiros();
+           ExercicioList.TestarOrdenacaoDeListasDeStrings();
         }
     }
 }

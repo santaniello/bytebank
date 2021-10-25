@@ -4,7 +4,7 @@ namespace Modelos.Extensoes
 {
     public static class ListExtensoes
     {
-        public static void AdicionarVarios(this List<int> lista, params int[] parametros)
+        public static void AdicionarVarios<T>(this List<T> lista, params T[] parametros)
         {
             foreach (var valor in parametros)
             {

@@ -4,7 +4,7 @@ using Modelos.Extensoes;
 
 namespace Core
 {
-    public class ExercicioListCSharp
+    public class ExercicioExtensoes
     {
         public static void AdicionarVarios()
         {
