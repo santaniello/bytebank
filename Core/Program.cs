@@ -6,7 +6,7 @@ namespace Core
     {
         static void Main(string[] args)
         {
-            ExerciciosOO.TestarUsoDeClasse();
+            //ExerciciosOO.TestarUsoDeClasse();
             //ExerciciosHerancaEInterface.TestarUsoDeClasse();
             //ExerciciosHerancaEInterface.TestarUsoDeHeranca();
            // ExerciciosHerancaEInterface.UsarSistema();
@@ -17,6 +17,7 @@ namespace Core
            //ExerciciosArrayEGenerics.TestarListaGenerica();
            //ExerciciosExceptions.TestarExceptions();
            //ExerciciosDisposable.CarregarContas();
+           ExercicioListCSharp.AdicionarVarios();
         }
     }
 }
