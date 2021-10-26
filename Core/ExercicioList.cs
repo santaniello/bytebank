@@ -112,6 +112,26 @@ namespace Core
                 }
             }
         }
+        
+        public static void TestarFiltrarContasNaoNulasAtravesDoWhereEDepoisOrdenarComOrderBy()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(341, 57480),
+                new ContaCorrente(342, 45678),
+                null,
+                new ContaCorrente(340, 48950),
+                null
+            };
+
+            var contasOrdenadas = contas
+                .Where(conta => conta != null)    
+                .OrderBy(conta => conta.Numero);
+            foreach(var conta in contasOrdenadas)
+            {
+               Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
+            }
+        }
     }
 
 }

@@ -22,7 +22,7 @@ namespace Core
            //ExercicioList.TestarOrdenacaoDeListasDeStrings();
            //ExercicioList.TestarOrdenacaoDeListasDeContaCorrente();
            //ExercicioList.TestarOrdenacaoDeListasDeContaCorrentePorAgencia();
-           ExercicioList.TestarOrdenacaoDeListasDeContaCorrenteUsandoOrderByComListaPossuindoObjetosNulos();
+           ExercicioList.TestarFiltrarContasNaoNulasAtravesDoWhereEDepoisOrdenarComOrderBy();
         }
     }
 }
