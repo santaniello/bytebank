@@ -19,7 +19,9 @@ namespace Core
            //ExerciciosDisposable.CarregarContas();
            //ExercicioExtensoes.AdicionarVarios();
            //ExercicioList.TestarOrdenacaoDeListasDeInteiros();
-           ExercicioList.TestarOrdenacaoDeListasDeStrings();
+           //ExercicioList.TestarOrdenacaoDeListasDeStrings();
+           //ExercicioList.TestarOrdenacaoDeListasDeContaCorrente();
+           ExercicioList.TestarOrdenacaoDeListasDeContaCorrentePorAgencia();
         }
     }
 }

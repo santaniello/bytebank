@@ -5,7 +5,7 @@ using Modelos.OO.Exception;
 
 namespace Modelos.OO.Classe
 {
-    public class ContaCorrente
+    public class ContaCorrente : IComparable
     {
         /**
          *  Atributo privado com getters e setters criados na mão (Essa maneira não é padrão da linguagem C#) 
@@ -121,6 +121,32 @@ namespace Modelos.OO.Classe
             return (contaCorrente.Agencia == Agencia && contaCorrente.Numero == Numero);
         }
         
+        // método que dirá como a nossa classe deve ser ordenada ao chamar o método Sort();
+        // Pertence a interface IComparable
+        public int CompareTo(object? obj)
+        {
+            // as faz o cast do objeto e se obj for nulo, não lança a exceção ao fazer o cast e sim repassa null para outra conta...
+            var outraConta = obj as ContaCorrente;
+            
+            if (outraConta == null)
+            {
+                return -1;
+            }
+
+            if (Numero < outraConta.Numero)
+            {
+                return -1;
+            }
+
+            if (Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+
+            return 1;
+            
+        }
+
         public void Sacar(double valor)
         {
             if (valor < 0)
