@@ -21,7 +21,8 @@ namespace Core
            //ExercicioList.TestarOrdenacaoDeListasDeInteiros();
            //ExercicioList.TestarOrdenacaoDeListasDeStrings();
            //ExercicioList.TestarOrdenacaoDeListasDeContaCorrente();
-           ExercicioList.TestarOrdenacaoDeListasDeContaCorrentePorAgencia();
+           //ExercicioList.TestarOrdenacaoDeListasDeContaCorrentePorAgencia();
+           ExercicioList.TestarOrdenacaoDeListasDeContaCorrenteUsandoOrderByComListaPossuindoObjetosNulos();
         }
     }
 }
