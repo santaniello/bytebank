@@ -21,12 +21,12 @@ namespace Async.View
             r_Servico = rServico;
         }
         
-          public void BtnProcessar_Click()
+          public void BtnProcessar_Click_Threads()
         {
             var contas = r_Repositorio.GetContaClientes();
 
             var contasQuantidadePorThread = contas.Count() / 4;
-
+            
             var contas_parte1 = contas.Take(contasQuantidadePorThread);
             var contas_parte2 = contas.Skip(contasQuantidadePorThread).Take(contasQuantidadePorThread);
             var contas_parte3 = contas.Skip(contasQuantidadePorThread*2).Take(contasQuantidadePorThread);
@@ -87,11 +87,77 @@ namespace Async.View
 
             ImprimirProcessamento(resultado, fim - inicio);
         }
+          
+          public void BtnProcessar_Click_TASKS()
+          {
+              var contas = r_Repositorio.GetContaClientes();
+            
+              var resultado = new List<string>();
+
+              ImprimirProcessamento(new List<string>(), TimeSpan.Zero);
+
+              var inicio = DateTime.Now;
+            
+              var contasTarefas = contas.Select(conta =>
+              {
+                  return Task.Factory.StartNew(() =>
+                  {
+
+                      var resultadoConta = r_Servico.ConsolidarMovimentacao(conta);
+                      resultado.Add(resultadoConta);
+                  });
+              }).ToArray();
+
+              Task.WhenAll(contasTarefas) // Aguarda a execução de todas as tasks
+                  .ContinueWith(task => // Encadeia a uma Task em outra
+                  {
+                      var fim = DateTime.Now;
+                      ImprimirProcessamento(resultado, fim - inicio);
+                  }).Wait();
+          }
+
+          public async Task BtnProcessar_Click_Async_Await()
+          {
+
+              var contas = r_Repositorio.GetContaClientes();
+           
+              ImprimirProcessamento(new List<string>(), TimeSpan.Zero);
+
+              var inicio = DateTime.Now;
+
+              var resultado = await ConsolidarContas(contas);
+
+              var fim = DateTime.Now;
+             
+              ImprimirProcessamento(resultado, fim - inicio);
+              
+          }
+          
+          private async Task<string[]> ConsolidarContas(IEnumerable<ContaCliente> contas)
+          {
+              var tasks = contas.Select(conta =>
+                  Task.Factory.StartNew(() => r_Servico.ConsolidarMovimentacao(conta))
+              );
+
+              return await Task.WhenAll(tasks);
+          }
 
         private void ImprimirProcessamento(List<String> result, TimeSpan elapsedTime)
         {
             var tempoDecorrido = $"{ elapsedTime.Seconds }.{ elapsedTime.Milliseconds} segundos!";
             var mensagem = $"Processamento de {result.Count} clientes em {tempoDecorrido}";
+
+            foreach (var r in result)
+            {
+                Console.WriteLine(r);
+            }
+            Console.WriteLine(mensagem);
+        }
+        
+        private void ImprimirProcessamento(IEnumerable<String> result, TimeSpan elapsedTime)
+        {
+            var tempoDecorrido = $"{ elapsedTime.Seconds }.{ elapsedTime.Milliseconds} segundos!";
+            var mensagem = $"Processamento de {result.Count()} clientes em {tempoDecorrido}";
 
             foreach (var r in result)
             {
