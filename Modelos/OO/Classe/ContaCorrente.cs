@@ -107,13 +107,13 @@ namespace Modelos.OO.Classe
             TotalDeContasCriadas++;
         }
 
-        public override bool Equals(object? obj)
+        public override bool Equals(object o)
         {
             /*
              * a palavra reservada as verifica se o Objeto recebido é do tipo ContaCorrente
              * caso seja ele faz o cast e caso contrário ele seta null.
              */
-            var contaCorrente = obj as ContaCorrente;
+            var contaCorrente = o as ContaCorrente;
 
             if (contaCorrente == null)
               return false;
@@ -121,31 +121,8 @@ namespace Modelos.OO.Classe
             return (contaCorrente.Agencia == Agencia && contaCorrente.Numero == Numero);
         }
         
-        // método que dirá como a nossa classe deve ser ordenada ao chamar o método Sort();
-        // Pertence a interface IComparable
-        public int CompareTo(object? obj)
-        {
-            // as faz o cast do objeto e se obj for nulo, não lança a exceção ao fazer o cast e sim repassa null para outra conta...
-            var outraConta = obj as ContaCorrente;
-            
-            if (outraConta == null)
-            {
-                return -1;
-            }
-
-            if (Numero < outraConta.Numero)
-            {
-                return -1;
-            }
-
-            if (Numero == outraConta.Numero)
-            {
-                return 0;
-            }
-
-            return 1;
-            
-        }
+        
+       
 
         public void Sacar(double valor)
         {
@@ -184,6 +161,31 @@ namespace Modelos.OO.Classe
         public void Depositar(double valor)
         {
             _saldo += valor;
+        }
+        
+        // método que dirá como a nossa classe deve ser ordenada ao chamar o método Sort();
+        // Pertence a interface IComparable
+        public int CompareTo(object obj)
+        {
+             // as faz o cast do objeto e se obj for nulo, não lança a exceção ao fazer o cast e sim repassa null para outra conta...
+            var outraConta = obj as ContaCorrente;
+            
+            if (outraConta == null)
+            {
+                return -1;
+            }
+
+            if (Numero < outraConta.Numero)
+            {
+                return -1;
+            }
+
+            if (Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+
+            return 1;
         }
     }
 }

@@ -133,14 +133,55 @@ namespace Async.View
               
           }
           
-          private async Task<string[]> ConsolidarContas(IEnumerable<ContaCliente> contas)
+          public async Task BtnProcessar_Click_Async_Await_Com_Progress()
           {
+              var contas = r_Repositorio.GetContaClientes();
+           
+              ImprimirProcessamento(new List<string>(), TimeSpan.Zero);
+
+              int progressoMaximo = contas.Count();
+
+              var inicio = DateTime.Now;
+
+              int statusAtual = 0;
+              
+              var progresso = new Progress<String>(str =>
+              {
+                  statusAtual++;
+                  Console.WriteLine("O Status atual é de : " + statusAtual);
+              });
+
+              var resultado = await ConsolidarContasComBarraDeProgresso(contas,progresso);
+
+              var fim = DateTime.Now;
+             
+              ImprimirProcessamento(resultado, fim - inicio);
+              
+          }
+          
+        private async Task<string[]> ConsolidarContas(IEnumerable<ContaCliente> contas)
+        {
               var tasks = contas.Select(conta =>
                   Task.Factory.StartNew(() => r_Servico.ConsolidarMovimentacao(conta))
               );
 
               return await Task.WhenAll(tasks);
-          }
+        }
+        
+        private async Task<string[]> ConsolidarContasComBarraDeProgresso(IEnumerable<ContaCliente> contas, IProgress<String> progresso)
+        {
+            var tasks = contas.Select(conta =>
+                Task.Factory.StartNew(() =>
+                {
+                    var movimentoConsolidado = r_Servico.ConsolidarMovimentacao(conta);
+                    progresso.Report(movimentoConsolidado);
+                    return movimentoConsolidado;
+                })
+            );
+
+            return await Task.WhenAll(tasks);
+        }
+
 
         private void ImprimirProcessamento(List<String> result, TimeSpan elapsedTime)
         {
