@@ -13,6 +13,7 @@ namespace Async.View
     {
         private readonly ContaClienteRepository r_Repositorio;
         private readonly ContaClienteService r_Servico;
+        // Classe responsável por criar os Cancellations Tokens
         private CancellationTokenSource _cts;
 
         public ByteBanckView(ContaClienteRepository rRepositorio, ContaClienteService rServico)
@@ -133,13 +134,15 @@ namespace Async.View
               
           }
           
-          public async Task BtnProcessar_Click_Async_Await_Com_Progress()
+          public async Task BtnProcessar_Click_Async_Await_Com_Progress_E_CancellationToken()
           {
+              
+              // Criando um CancellationToken
+              _cts = new CancellationTokenSource();
+
               var contas = r_Repositorio.GetContaClientes();
            
               ImprimirProcessamento(new List<string>(), TimeSpan.Zero);
-
-              int progressoMaximo = contas.Count();
 
               var inicio = DateTime.Now;
 
@@ -151,12 +154,22 @@ namespace Async.View
                   Console.WriteLine("O Status atual é de : " + statusAtual);
               });
 
-              var resultado = await ConsolidarContasComBarraDeProgresso(contas,progresso);
-
-              var fim = DateTime.Now;
-             
-              ImprimirProcessamento(resultado, fim - inicio);
+              try
+              {
+                  var resultado = await ConsolidarContasComBarraDeProgresso(contas,progresso,_cts.Token); // Passando o token criado em diante
+                  var fim = DateTime.Now;
+                  ImprimirProcessamento(resultado, fim - inicio);
+              }
+              catch (OperationCanceledException)
+              {
+                  Console.WriteLine("Operação cancelada pelo usuário");
+              } 
               
+          }
+          
+          public void BtnCancelar_Click()
+          {
+              _cts.Cancel(); // cancela a operação !
           }
           
         private async Task<string[]> ConsolidarContas(IEnumerable<ContaCliente> contas)
@@ -164,19 +177,20 @@ namespace Async.View
               var tasks = contas.Select(conta =>
                   Task.Factory.StartNew(() => r_Servico.ConsolidarMovimentacao(conta))
               );
-
               return await Task.WhenAll(tasks);
         }
         
-        private async Task<string[]> ConsolidarContasComBarraDeProgresso(IEnumerable<ContaCliente> contas, IProgress<String> progresso)
+        private async Task<string[]> ConsolidarContasComBarraDeProgresso(IEnumerable<ContaCliente> contas, IProgress<String> progresso, CancellationToken ct)
         {
             var tasks = contas.Select(conta =>
                 Task.Factory.StartNew(() =>
                 {
-                    var movimentoConsolidado = r_Servico.ConsolidarMovimentacao(conta);
+                    ct.ThrowIfCancellationRequested(); // Se o token foi cancelado, cancela a operação e lança uma exceção !
+                    var movimentoConsolidado = r_Servico.ConsolidarMovimentacao(conta,ct);
                     progresso.Report(movimentoConsolidado);
+                    ct.ThrowIfCancellationRequested(); // Se o token foi cancelado, cancela a operação e lança uma exceção !
                     return movimentoConsolidado;
-                })
+                },ct) // O TaskScheduler, antes de se preocupar em agendar a execução de uma tarefa, providenciando uma thread e preparando-a para executar o código, verificará se o CancellationToken já foi disparado. Então, ele não irá preparar  este cenário para a execução desta task, Evitando a execução de tasks que já estão canceladas.
             );
 
             return await Task.WhenAll(tasks);

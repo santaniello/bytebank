@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 {
     public class ContaClienteService
     {
+
         public string ConsolidarMovimentacao(ContaCliente conta)
         {
             return ConsolidarMovimentacao(conta, CancellationToken.None);
